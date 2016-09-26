@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Predix Node JS App</title>
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="stylesheets/bootstrap.min.css" />
+    <script src="../scripts/Chart.js"></script>
+    <script src="../scripts/Timeseries.js"></script>
+    <script src="../scripts/Asset.js"></script>
+</head>
+<body onload="configureTagsTimeseriesData();">
+    <div class="header">
+        <h2 align="center">Secure Page - Test gilbertosg</h2>
+        <h4 align="center">Predix Developer Kit</h4>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <br>
+                <p align="center">This page is gated by the check_token call of UAA.</p>
+                <ul class="list-inline" style="text-align: center;">
+                    <li>
+                        <a class="btn btn-primary" href="/">Home <i class="glyphicon glyphicon-home"></i> </a>
+                    </li>
+                    <li>
+                        <a class="btn btn-danger" href="/logout">Logout <i class="glyphicon glyphicon-arrow-left"></i></a>
+                    </li>
+                </ul>
+                <hr>
+                <p>
+                    <br>
+                    Instructions:<br>
+                    1. Select the device.<br>
+                    2. Set the start time: 1y ago<br>
+                    3. Click Submit<br>
+                    4. The chart is generated with dummy data generated in Predix Toolkit. This is a simulation of
+                    data that can be sent from a sensor.
+                </p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3 id="tag_list_title">Wind Data Microservices Integration</h3>
+                <div class="timeseries_machine_container table-responsive">
+                    <table class="table">
+                        <tr>
+                            <td>
+                                <p><b id="predix_asset_table"></b></p>
+                                <table id="aTable"></table>
+                                <div style="height:100px;,left: 0">
+                                    <a href="javascript:detailAssetModel();" id="assset_detail_link" style="display: none;">View Asset Model</a>
+                                </div>
+
+                                <div id="myModal" class="modal">
+
+                                    <div class="modal-content">
+                                        <span class="close" onclick="assetDetailCLose();">x</span>
+                                        <textarea id="asset_detail_model" class="asset_detail_model" style="width:100%"></textarea>
+                                    </div>
+
+                                </div>
+                            </td>
+                            <td>
+                                <p> <b>Select the tags </b></p>
+                                <select multiple id="tagList" class='tag-multiple'>
+                                </select>
+                            </td><td>
+                            <p> <b>Select start time</b></p>
+                            <select id='start-time' class ='start-time'>
+                                <option value="5mi-ago">5mi-ago</option>
+                                <option value="15mi-ago">15mi-ago</option>
+                                <option value="30mi-ago">30mi-ago</option>
+                                <option value="45mi-ago">45mi-ago</option>
+                                <option value="45mi-ago">45mi-ago</option>
+                                <option value="1h-ago">1h-ago</option>
+                                <option value="5h-ago">5h-ago</option>
+                                <option value="10h-ago">10h-ago</option>
+                                <option value="1d-ago">1d-ago</option>
+                                <option value="5d-ago">5d-ago</option>
+                                <option value="10d-ago">10d-ago</option>
+                                <option value="1w-ago">1w-ago</option>
+                                <option value="2w-ago">2w-ago</option>
+                                <option value="3w-ago">3w-ago</option>
+                                <option value="1mm-ago">1mm-ago</option>
+                                <option value="2mm-ago">2mm-ago</option>
+                                <option value="3mm-ago">3mm-ago</option>
+                                <option value="5mm-ago">5mm-ago</option>
+                                <option value="6mm-ago">6mm-ago</option>
+                                <option value="8mm-ago">8mm-ago</option>
+                                <option value="1y-ago" selected='selected'>1y-ago</option>
+                            </select>
+
+                        </td></tr></table>
+                    <button type="button" class="timeseries_button" id="timeseries_button" onclick="onclick_machineServiceData();">Show chart</button>
+                    <p id="windService_machine_yearly"></p>
+                    <div style="width:100%">
+                        <h3 id='line_chart_info'></h3>
+                        <div id="add_machine_canvas">
+                            <p id="windService_machine_tag"></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="footer">
+        <div class="container">
+            <img class="img-responsive pull-left" src="/images/logo_solo600.png" style="max-width: 100px;" />
+            <img class="img-responsive pull-right" src="/images/monogram-wdmk.png" style="max-width: 100px;" />
+        </div>
+    </div>
+
+    <script src="../scripts/bootsrap.min.js"></script>
+
+</body>
+</html>
